@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'myApp';
+  bookmarks = JSON.parse(localStorage.getItem("bookmarks") || '');
+  numberOfBookmarks = this.bookmarks.length;
+
 }
