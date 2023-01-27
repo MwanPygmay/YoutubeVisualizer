@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { SearchBarService } from '../search-bar.service';
 
@@ -7,12 +7,18 @@ import { SearchBarService } from '../search-bar.service';
   templateUrl: './video-view.component.html',
   styleUrls: ['./video-view.component.css']
 })
-export class VideoViewComponent {
+export class VideoViewComponent implements OnInit {
+
+  public youtubeURL = '';
   
   constructor(public searchBarService: SearchBarService){}
 
+  ngOnInit(){
+    this.searchBarService.url.subscribe(url => this.youtubeURL = url.replace('watch?v=','embed/'));
+  }
+
   getURL(){
-    return this.searchBarService.getURL().replace('watch?v=','embed/')
+    return this.youtubeURL;
   }
 
 }

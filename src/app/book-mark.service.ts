@@ -8,5 +8,5 @@ export class BookMarkService {
 
   constructor(private searchBarService: SearchBarService) { }
 
-  getURL(){return this.searchBarService.getURL()}
+  getURL(){return this.searchBarService.url.value;}
 }

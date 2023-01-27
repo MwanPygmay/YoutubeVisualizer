@@ -11,7 +11,7 @@ export class BookmarksComponent {
   public bookmarks: string[] = [];
 
   constructor (public bookmarksService: BookMarkService){
-    let formerBookmarks = JSON.parse(localStorage.getItem('bookmarks') || '');
+    let formerBookmarks = JSON.parse(localStorage.getItem('bookmarks')!) || [];
     for (let i = 0; i < formerBookmarks.length; i++) {
       this.bookmarks.push(formerBookmarks[i]);
       
@@ -20,7 +20,7 @@ export class BookmarksComponent {
 
   showHideBookmarks(){this.showBookmarks = !this.showBookmarks}
 
-  add(bookmark: string){
+  addUrlToBookmarks(bookmark: string){
     this.bookmarks.push(bookmark);
     localStorage.setItem("bookmarks",JSON.stringify(this.bookmarks));
   }

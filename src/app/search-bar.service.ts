@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { HistoryService } from './history.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchBarService {
-  url = '';
+  url = new BehaviorSubject('');
   constructor(private historyService: HistoryService) { }
 
   changeURL(newURL: string) {
-    this.url = newURL;
-    this.historyService.add(newURL);
+    this.url.next(newURL);
+    this.historyService.addUrlToHistory(newURL);
   }
 
   getURL(){return this.url;}

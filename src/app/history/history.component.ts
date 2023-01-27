@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HistoryService } from '../history.service';
 import { SearchBarService } from '../search-bar.service';
 
@@ -7,13 +7,21 @@ import { SearchBarService } from '../search-bar.service';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent {
+export class HistoryComponent implements OnInit{
+
+  
+
   constructor (public historyService: HistoryService, public searchBarService: SearchBarService){
-    let formerHistory = JSON.parse(localStorage.getItem('bookmarks') || '');
-    for (let i = 0; i < formerHistory.length; i++) {
-      this.historyService.add(formerHistory[i]);
-      
-    }
+    
   }
+  ngOnInit(): void {
+    console.log("ok là ça marche");
+    this.historyService.printHistory();
+    //this.historyService.getFormerHistory();
+  }
+  
+  
+
+  
 }
 

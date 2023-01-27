@@ -1,4 +1,4 @@
-<button type="button" class="changeURL" (click)="add(bookmarksService.getURL())">Add to bookmarks</button>
+<button type="button" class="changeURL" (click)="addUrlToBookmarks(bookmarksService.getURL())">Add to bookmarks</button>
 <div *ngIf="showBookmarks; else elseBlock"><button type="button" class="changeURL" (click)="showHideBookmarks()">Hide bookmarks</button>
 <div *ngFor="let bookmark of bookmarks">{{bookmark}}</div>
 </div>
